@@ -85,6 +85,13 @@ nav a:hover {
     object-fit: cover;
 }
 
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .profile-content h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
@@ -164,6 +171,10 @@ section {
 h2 {
     font-size: 2.5rem;
     margin-bottom: 3rem;
+    text-align: center;
+}
+
+#about p {
     text-align: center;
 }
 
