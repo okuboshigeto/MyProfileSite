@@ -178,13 +178,95 @@ h2 {
     text-align: center;
 }
 
-/* Portfolio Grid */
+/* Portfolio Component */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
     gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 2rem;
+    justify-content: center;
+}
+
+.portfolio-item {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
+}
+
+.portfolio-item__header {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 0.75rem;
+}
+
+.portfolio-item__title {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.portfolio-item__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.portfolio-item__description {
+    color: var(--text-color);
+    opacity: 0.8;
+    margin: 0;
+    flex-grow: 1;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.portfolio-item__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+    margin-top: auto;
+    width: 120px;
+}
+
+.portfolio-item:hover .portfolio-item__link {
+    color: #1d4ed8;
+}
+
+.portfolio-item__link i {
+    font-size: 0.9rem;
+}
+
+/* コンポーネント全体をクリック可能にするための疑似要素 */
+.portfolio-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
 }
 
 /* Contact Form */
