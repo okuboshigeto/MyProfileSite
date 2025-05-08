@@ -10,6 +10,11 @@
     --text-color: #1f2937;
     --bg-color: #fdf6e3;
     --accent-color: #f59e0b;
+    /* Portfolio Card用の変数を追加 */
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --card-border: rgba(0, 0, 0, 0.1);
+    --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --card-shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -178,7 +183,10 @@ h2 {
     text-align: center;
 }
 
-/* Portfolio Component */
+/* Portfolio Component
+ * カード形式のポートフォリオアイテム
+ * ホバー時に浮き上がる効果とシャドウの強調
+ */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
@@ -188,25 +196,34 @@ h2 {
 }
 
 .portfolio-item {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--card-bg);
     border-radius: 12px;
     padding: 1.5rem;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--card-border);
     display: flex;
     flex-direction: column;
     gap: 1rem;
     cursor: pointer;
     position: relative;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--card-shadow);
     text-align: center;
 }
 
 .portfolio-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--card-shadow-hover);
     border-color: var(--primary-color);
+}
+
+/* アクセシビリティ向上：キーボードフォーカス時のスタイル */
+.portfolio-item:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+.portfolio-item:focus:not(:focus-visible) {
+    outline: none;
 }
 
 .portfolio-item__header {
@@ -369,14 +386,13 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* ナビゲーション */
     nav ul {
         display: none;
     }
-
     .hamburger {
         display: block;
     }
-
     .hamburger span {
         display: block;
         width: 25px;
@@ -385,14 +401,18 @@ footer {
         margin: 5px 0;
         transition: all 0.3s ease;
     }
-
+    /* プロフィール */
     .profile-container {
         flex-direction: column;
         text-align: center;
         gap: 2rem;
     }
-
     .profile-content h1 {
         font-size: 2.5rem;
+    }
+    /* ポートフォリオ */
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
     }
 }
